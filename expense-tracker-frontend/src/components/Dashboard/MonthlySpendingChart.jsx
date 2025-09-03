@@ -1,0 +1,51 @@
+import React, { useEffect, useRef } from 'react';
+import { Chart } from 'chart.js/auto';
+import { useTheme } from '../../contexts/ThemeContext';
+
+
+const MonthlySpendingChart = ({ monthlyData }) => {
+  const chartRef = useRef(null);
+  const { theme } = useTheme();
+
+  useEffect(() => {
+    if (!monthlyData) return;
+    const chartInstance = new Chart(chartRef.current, {
+      type: 'line',
+      data: {
+        labels: monthlyData.labels,
+        datasets: [{
+          label: 'Spending',
+          data: monthlyData.data,
+          fill: false,
+          borderColor: '#10B981',
+          tension: 0.4,
+        }],
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: {
+          legend: { display: false },
+        },
+        scales: {
+          x: {
+            grid: { color:'rgba(255, 255, 255, 0.1)'  },
+            ticks: { color: '#9CA3AF' },
+          },
+          y: {
+            grid: { color:'rgba(255, 255, 255, 0.1)' },
+            ticks: { color: '#9CA3AF'  },
+          },
+        },
+      },
+    });
+
+    return () => {
+      chartInstance.destroy();
+    };
+  }, [theme, monthlyData]);
+
+  return <canvas ref={chartRef} />;
+};
+
+export default MonthlySpendingChart;

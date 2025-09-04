@@ -1,4 +1,4 @@
-// Income API
+const API_BASE = process.env.REACT_APP_API_BASE || 'http://localhost:5000/api';
 export async function getIncomes(token) {
   const res = await fetch(`${API_BASE}/incomes`, {
     headers: {
@@ -125,7 +125,6 @@ export async function getExpenseTrends(token) {
   if (!res.ok) throw new Error('Failed to fetch expense trends');
   return res.json();
 }
-const API_BASE = 'http://localhost:5000/api';
 
 export async function loginUser({ username, password }) {
   const res = await fetch(`${API_BASE}/auth/login`, {

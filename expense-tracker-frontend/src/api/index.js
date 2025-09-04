@@ -1,4 +1,6 @@
-const API_BASE = process.env.REACT_APP_API_BASE || 'http://localhost:5000/api';
+const API_BASE = import.meta.env.MODE === 'production' 
+  ? 'https://finora-gl30.onrender.com/api'
+  : 'http://localhost:5000/api';
 export async function getIncomes(token) {
   const res = await fetch(`${API_BASE}/incomes`, {
     headers: {

@@ -27,13 +27,13 @@ const expenseSchema = z.object({
   amount: z.number().positive(),
   description: z.string().optional(),
   categoryId: z.number().int().positive(),
-  date: z.string().min(1) // ISO string required
+  date: z.string().min(1) 
 });
 
 const incomeSchema = z.object({
   amount: z.number().positive(),
   source: z.string().min(1),
-  date: z.string().optional() // ISO string, optional for default
+  date: z.string().optional() 
 });
 
 module.exports = {

@@ -42,7 +42,6 @@ router.put('/:id', authenticateToken, async(req, res) => {
     }
     const { name, budget } = parseResult.data;
     try {
-        // Ensure the category belongs to the user
         const category = await prisma.category.findUnique({
             where: { id: categoryId }
         });
@@ -62,7 +61,6 @@ router.put('/:id', authenticateToken, async(req, res) => {
 router.delete('/:id', authenticateToken, async(req, res) => {
     const categoryId = parseInt(req.params.id);
     try {
-        // Ensure the category belongs to the user
         const category = await prisma.category.findUnique({
             where: { id: categoryId }
         });

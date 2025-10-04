@@ -12,9 +12,7 @@ const ExpenseModal = ({ isOpen, onClose, onSave, expense, categories = [] }) => 
   useEffect(() => {
     function formatDate(val) {
       if (!val) return '';
-      // If already yyyy-MM-dd, return as is
       if (/^\d{4}-\d{2}-\d{2}$/.test(val)) return val;
-      // Try to parse and format
       const d = new Date(val);
       if (isNaN(d)) return '';
       return d.toISOString().split('T')[0];

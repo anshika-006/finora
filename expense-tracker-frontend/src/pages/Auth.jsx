@@ -8,8 +8,6 @@ const AuthPage = ({ onLogin }) => {
   const [isRegistering, setIsRegistering] = useState(false);
 
   const handleRegister = (userData) => {
-    // In a real app, you would call the register endpoint and then the login endpoint.
-    // For now, we'll just log the user in with their new credentials.
     onLogin(userData);
   };
 

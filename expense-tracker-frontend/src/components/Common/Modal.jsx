@@ -3,21 +3,17 @@ import { X } from 'lucide-react';
 
 const Modal = ({ isOpen, onClose, title, children }) => {
   if (!isOpen) return null;
-
-  // This function stops the click from propagating to the overlay, which would close the modal.
-  const handleModalContentClick = (e) => {
+ const handleModalContentClick = (e) => {
     e.stopPropagation();
   };
 
   return (
-    // The main overlay
     <div 
       className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-60 transition-opacity duration-300" 
       aria-modal="true" 
       role="dialog"
-      onClick={onClose} // Close modal if overlay is clicked
+      onClick={onClose} 
     >
-      {/* The modal content */}
       <div 
         className="relative w-full max-w-md p-6 bg-white dark:bg-gray-800 rounded-lg shadow-xl transform transition-all duration-300" 
         onClick={handleModalContentClick}

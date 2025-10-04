@@ -20,7 +20,6 @@ const Expenses = () => {
 
   useEffect(() => {
     fetchAll();
-    // eslint-disable-next-line
   }, []);
 
   const fetchAll = async () => {
